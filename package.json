@@ -8,7 +8,7 @@
     "src/test": "src/test"
   },
   "scripts": {
-    "test": "mocha --reporter spec --bail --check-leaks test/",
+    "test": "mocha --reporter spec --bail --check-leaks src/test/",
     "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register src/test/**/*.test.ts && nyc report",
     "cover": "nyc --reporter html --reporter text npm run test",
     "build": "tsc",
