@@ -2,7 +2,8 @@
   "name": "gql-builder",
   "version": "0.0.1",
   "description": "Graphql Query Builder",
-  "main": "src/index.ts",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "directories": {
     "src/test": "src/test"
   },
