@@ -143,7 +143,7 @@ export class QueryField {
                 for (let i = 0; i < fields.length; i++) {
                     if (typeof fields[i] === 'string') {
                         this.fields[value].addChild(fields[i]);
-                    } else if (fields[i].constructor.name === 'Object') {
+                    } else if (fields[i] instanceof Object) {
                         if (!fields[i].name) {
                             throw "Not found name property";
                         }
