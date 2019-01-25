@@ -10,7 +10,8 @@
   "scripts": {
     "test": "mocha -r ts-node/register src/test/**/*.test.ts",
     "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register src/test/**/*.test.ts && nyc report",
-    "build": "tsc"
+    "build": "tsc",
+    "travis-cover": "nyc --reporter lcovonly npm run test"
   },
   "repository": {
     "type": "git",
