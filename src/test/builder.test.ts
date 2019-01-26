@@ -1,6 +1,5 @@
 import {GqlBuilder} from "..";
 import {expect, should} from "chai";
-import {QueryField} from "../lib/QueryField";
 
 
 describe('GqlBuilder builder Property Test Suits', function () {
