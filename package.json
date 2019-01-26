@@ -15,7 +15,7 @@
     "build": "tsc",
     "travis-cover": "nyc --reporter lcovonly -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register src/test/**/*.test.ts && nyc report",
     "travis-cover2": "nyc --reporter lcovonly npm run test",
-    "dist": "tsc && copy /Y package.json dist && copy /Y readme.md dist && cd dist && npm publish"
+    "dist": "tsc && cp package.json dist && cp README.md dist && cd dist && npm publish"
   },
   "repository": {
     "type": "git",
