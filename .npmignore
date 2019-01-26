@@ -8,4 +8,4 @@ AUTHORS
 .idea
 src
 ROADMAP.md
-*.map
+.*.map
