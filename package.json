@@ -1,6 +1,6 @@
 {
   "name": "gql-builder",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Graphql Query Builder",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
