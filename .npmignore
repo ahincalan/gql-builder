@@ -11,4 +11,6 @@ ROADMAP.md
 
 # ignore .js.map files
 *.js.map
-*.js
+**.map
+**.**.map
+
