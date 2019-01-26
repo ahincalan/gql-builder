@@ -4,10 +4,10 @@ export class QueryField {
     filters: any = {};
     parent: any;
     depth = 0;
-    name: string;
+    name: string = '';
 
     constructor() {
-        this.name = '';
+
     }
 
     addSibling(value: any, fields?: any, filters?: any): QueryField {
@@ -30,8 +30,9 @@ export class QueryField {
                     } else if (value[i].constructor === Object) {
                         if (!value[i].name) {
                             throw "Not found name property";
+                        } else {
+                            this.addChild(value[i].name, value[i].fields, value[i].filters);
                         }
-                        this.addChild(value[i].name, value[i].fields, value[i].filters);
                     } else {
                         throw "Not supported field type";
                     }
@@ -44,8 +45,9 @@ export class QueryField {
         } else if (value.constructor === Object) {
             if (!value.name) {
                 throw "Not found name property";
+            } else {
+                this.addChild(value.name, value.fields, value.filters);
             }
-            this.addChild(value.name, value.fields, value.filters);
 
         }
         return this;
@@ -74,8 +76,9 @@ export class QueryField {
                         else if (fields[i].constructor === Object) {
                             if (!fields[i].name) {
                                 throw "Not found name property";
+                            } else {
+                                this.parent.fields[value].addParent(fields[i].name, fields[i].fields, fields[i].filters);
                             }
-                            this.parent.fields[value].addParent(fields[i].name, fields[i].fields, fields[i].filters);
                         }
                     }
                 } else if (typeof fields === 'string') {
@@ -83,8 +86,9 @@ export class QueryField {
                 } else if (fields.constructor === Object) {
                     if (!fields.name) {
                         throw "Not found name property";
+                    } else {
+                        this.parent.fields[value].addParent(fields.name, fields.fields, fields.filters);
                     }
-                    this.parent.fields[value].addParent(fields.name, fields.fields, fields.filters);
                 }
             }
             this.parent.fields[value].parent = this.parent;
@@ -103,8 +107,9 @@ export class QueryField {
                         else if (fields[i].constructor === Object) {
                             if (!fields[i].name) {
                                 throw "Not found name property";
+                            } else {
+                                this.fields[value].addParent(fields[i].name, fields[i].fields, fields[i].filters);
                             }
-                            this.fields[value].addParent(fields[i].name, fields[i].fields, fields[i].filters);
                         }
                     }
                 } else if (typeof fields === 'string') {
@@ -112,8 +117,9 @@ export class QueryField {
                 } else if (fields.constructor === Object) {
                     if (!fields.name) {
                         throw "Not found name property";
+                    } else {
+                        this.fields[value].addParent(fields.name, fields.fields, fields.filters);
                     }
-                    this.fields[value].addParent(fields.name, fields.fields, fields.filters);
                 }
             }
             this.fields[value].parent = this;
@@ -140,14 +146,16 @@ export class QueryField {
         this.fields[value] = new QueryField();
         if (fields) {
             if (fields.constructor === Array) {
+
                 for (let i = 0; i < fields.length; i++) {
                     if (typeof fields[i] === 'string') {
                         this.fields[value].addChild(fields[i]);
                     } else if (fields[i].constructor === Object) {
                         if (!fields[i].name) {
                             throw "Not found name property";
+                        } else {
+                            this.fields[value].addChild(fields[i].name, fields[i].fields, fields[i].filters);
                         }
-                        this.fields[value].addChild(fields[i].name, fields[i].fields, fields[i].filters);
                     }
                 }
             } else if (typeof fields === 'string') {
@@ -155,8 +163,9 @@ export class QueryField {
             } else if (fields.constructor === Object) {
                 if (!fields.name) {
                     throw "Not found name property";
+                } else {
+                    this.fields[value].addChild(fields.name, fields.fields, fields.filters);
                 }
-                this.fields[value].addChild(fields.name, fields.fields, fields.filters);
             }
         }
         this.fields[value].parent = this;

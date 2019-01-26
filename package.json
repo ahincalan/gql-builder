@@ -2,8 +2,8 @@
   "name": "gql-builder",
   "version": "0.0.1",
   "description": "Graphql Query Builder",
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "directories": {
     "src/test": "src/test"
   },
@@ -13,7 +13,7 @@
     "cover2": "nyc --reporter html --reporter text npm run test",
     "cover": "nyc --reporter html --reporter text -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register src/test/**/*.test.ts && nyc report",
     "build": "tsc",
-    "travis-cover": "nyc --reporter html --reporter text --reporter lcovonly -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register src/test/**/*.test.ts && nyc report",
+    "travis-cover": "nyc --reporter lcovonly -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register src/test/**/*.test.ts && nyc report",
     "travis-cover2": "nyc --reporter lcovonly npm run test"
   },
   "repository": {
@@ -32,8 +32,6 @@
   },
   "homepage": "https://github.com/ahincalan/gql-builder#readme",
   "dependencies": {
-    "D": "^1.0.0",
-    "tslint-config-airbnb": "^5.11.1"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
@@ -43,6 +41,8 @@
     "nyc": "^13.1.0",
     "ts-node": "^8.0.1",
     "typescript": "^3.2.4",
-    "coveralls": "^3.0.2"
+    "coveralls": "^3.0.2",
+    "D": "^1.0.0",
+    "tslint-config-airbnb": "^5.11.1"
   }
 }

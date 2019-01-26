@@ -21,7 +21,7 @@ export class GqlBuilder extends QueryField {
     private _filterToString(): string {
         let str = '';
         for (const filter in this.filters) {
-          //  if (this.filters.hasOwnProperty(filter)) {
+            if (this.filters.hasOwnProperty(filter)) {
                 if (typeof this.filters[filter] === 'string') {
                     if (str !== '') str += ',\n';
                     str += '$' + filter + ' : ' + this.filters[filter];
@@ -34,32 +34,32 @@ export class GqlBuilder extends QueryField {
                         }
                     }
                 }
-          //  }
+            }
         }
         return (str ? '(' + str + ')' : '');
     }
 
     private _setFilters(fields?: any): void {
         for (const key in fields) {
-          //  if (fields.hasOwnProperty(key)) {
+            if (fields.hasOwnProperty(key)) {
                 if (fields[key].filters)
                     this.filters = {...this.filters, ...fields[key].filters};
                 if (fields[key].fields && Object.keys(fields[key].fields).length > 0) {
                     this._setFilters(fields[key].fields);
                 }
-         //   }
+            }
         }
     }
 
     private _setDepth(fields?: any): void {
         for (const key in fields) {
-           // if (fields.hasOwnProperty(key)) {
+            if (fields.hasOwnProperty(key)) {
                 if (fields[key].parent)
                     fields[key].depth = fields[key].parent.depth + 1;
                 if (fields[key].fields && Object.keys(fields[key].fields).length > 0) {
                     this._setDepth(fields[key].fields);
                 }
-           // }
+            }
         }
     }
 
@@ -67,7 +67,7 @@ export class GqlBuilder extends QueryField {
     private _addFilterString(filters: any): string {
         let ret = '';
         for (const filter in filters) {
-          //  if (filters.hasOwnProperty(filter)) {
+            if (filters.hasOwnProperty(filter)) {
                 if (typeof filters[filter] === 'string') {
                     if (ret !== '') ret += ',';
                     ret += filter + ': $' + filter;
@@ -84,7 +84,7 @@ export class GqlBuilder extends QueryField {
                     ret += sf;
                     ret += '}';
                 }
-           // }
+            }
         }
         if (Object.keys(filters).length > 0)
             ret = '( ' + ret + ' ) ';
@@ -96,7 +96,7 @@ export class GqlBuilder extends QueryField {
         const _fields = fields || this.fields;
         let _ret = ret || '';
         for (const key in _fields) {
-          //  if (_fields.hasOwnProperty(key)) {
+            if (_fields.hasOwnProperty(key)) {
                 if (_fields[key].fields && Object.keys(_fields[key].fields).length > 0) {
                     let tt2 = '';
                     for (let j = 0; j <= _fields[key].depth; j++) tt2 += '\t';
@@ -114,7 +114,7 @@ export class GqlBuilder extends QueryField {
                     if (_fields[key].filters)
                         _ret += this._addFilterString(_fields[key].filters);
                 }
-           // }
+            }
         }
         return _ret;
     }
