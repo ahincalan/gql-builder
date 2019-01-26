@@ -31,8 +31,7 @@
     "url": "https://github.com/ahincalan/gql-builder/issues"
   },
   "homepage": "https://github.com/ahincalan/gql-builder#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.5",
