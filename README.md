@@ -50,7 +50,7 @@ qb.toQueryString();
 
 ---
 
-###### Query Example 2
+##### Query Example 2
 String Usage
 ```text
 'query {
@@ -83,7 +83,7 @@ qb.toQueryString();
 
 ---
 
-###### Query Example 3
+##### Query Example 3
 String Usage
 ```text
 'query ($id: 'Int') {
@@ -117,7 +117,7 @@ qb.toQueryString();
 
 ---
 
-###### Mutation Example 1
+##### Mutation Example 1
 String Usage
 ```text
 'mutation ($user: User_Input) {
@@ -144,7 +144,7 @@ qb.toMutationString();
 
 ---
 
-###### Mutation Example 2
+##### Mutation Example 2
 String Usage
 ```text
 'mutation ($id: Int, $name: String, $gender: String) {
